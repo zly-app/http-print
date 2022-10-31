@@ -1,0 +1,9 @@
+version: '3'
+services:
+  http-print:
+    image: zlyuan/http-print:latest
+    container_name: http-print
+    restart: unless-stopped
+    #command: /src/app
+    ports:
+      - "8080:8080"

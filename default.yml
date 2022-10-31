@@ -1,0 +1,9 @@
+# 框架配置, 详细配置参考 https://github.com/zly-app/zapp/tree/master/config
+frame:
+    Name: 'http-print' # app名
+
+services:
+  # web服务配置, 详细配置参考 https://github.com/zly-app/service/tree/master/api
+  api:
+    # bind地址
+    Bind: ':8080'
