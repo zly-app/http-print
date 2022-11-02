@@ -2,7 +2,7 @@ FROM golang:1.19 as builder
 COPY . /src
 ENV GOPROXY=https://goproxy.cn,https://goproxy.io,direct
 RUN cd /src && \
- go build -o app .
+ go mod tidy && go build -o app .
 
 FROM ubuntu
 COPY --from=builder /src/app /src/app
