@@ -4,8 +4,8 @@ go 1.19
 
 require (
 	github.com/json-iterator/go v1.1.10
-	github.com/zly-app/service/api v0.0.0-20221002065050-69d658687e57
-	github.com/zly-app/zapp v1.3.0
+	github.com/zly-app/service/api v0.0.0-20221102052316-ff7249180bba
+	github.com/zly-app/zapp v1.3.1
 )
 
 require (
