@@ -47,10 +47,8 @@ func Process(ctx *api.Context) interface{} {
 }
 
 func Router(c core.IComponent, route api.Party) {
-	route.Get("/", api.Wrap(Process))
-	route.Post("/", api.Wrap(Process))
-	route.Get("/{a:path}", api.Wrap(Process))
-	route.Post("/{a:path}", api.Wrap(Process))
+	route.Any("/", api.Wrap(Process))
+	route.Any("/{a:path}", api.Wrap(Process))
 }
 
 func main() {
