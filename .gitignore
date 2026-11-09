@@ -1,0 +1,3 @@
+# go build ./... 会在 main 包目录生成可执行文件
+*.exe
+tmp/
