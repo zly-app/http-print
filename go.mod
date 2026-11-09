@@ -4,7 +4,7 @@ go 1.24.1
 
 require (
 	github.com/json-iterator/go v1.1.12
-	github.com/zly-app/service/api v0.0.0-20261109092838-cacf94394158
+	github.com/zly-app/service/api v0.0.0-20261109111638-1699a4e7f5d7
 	github.com/zly-app/zapp v1.4.6
 )
 

@@ -46,15 +46,17 @@ func Process(ctx *api.Context) interface{} {
 	)
 }
 
-func Router(c core.IComponent, route api.Party) {
-	route.Any("/", api.Wrap(Process))
-	route.Any("/{a:path}", api.Wrap(Process))
+func Router(reg *api.Registrar) api.RegisterApiRouterFunc {
+	return func(c core.IComponent, route api.Party) {
+		route.Any("/", reg.Wrap(Process))
+		route.Any("/{a:path}", reg.Wrap(Process))
+	}
 }
 
 func main() {
 	app := zapp.NewApp("http-print", api.WithService())
-	api.Install(app).RegistryRouter(Router)
-	api.SetWriteResponseFunc(func(ctx *api.Context, code int, message string, data interface{}) {
+	reg := api.Install(app)
+	reg.SetWriteResponseFunc(func(ctx *api.Context, code int, message string, data interface{}) {
 		switch v := data.(type) {
 		case string:
 			_, _ = ctx.WriteString(v)
@@ -66,5 +68,6 @@ func main() {
 			})
 		}
 	})
+	reg.RegistryRouter(Router(reg))
 	app.Run()
 }
