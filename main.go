@@ -53,13 +53,13 @@ func Router(c core.IComponent, route api.Party) {
 
 func main() {
 	app := zapp.NewApp("http-print", api.WithService())
-	api.RegistryRouter(Router)
+	api.Install(app).RegistryRouter(Router)
 	api.SetWriteResponseFunc(func(ctx *api.Context, code int, message string, data interface{}) {
 		switch v := data.(type) {
 		case string:
 			_, _ = ctx.WriteString(v)
 		default:
-			_, _ = ctx.JSON(api.Response{
+			_ = ctx.JSON(api.Response{
 				ErrCode: code,
 				ErrMsg:  message,
 				Data:    data,
